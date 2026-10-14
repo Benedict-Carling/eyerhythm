@@ -3,9 +3,9 @@ description: 'Setup Node.js and install dependencies with caching'
 
 inputs:
   node-version:
-    description: 'Node.js version'
+    description: 'Node.js version (defaults to .nvmrc)'
     required: false
-    default: '20'
+    default: ''
   install-type:
     description: 'npm install type (ci or ci --production)'
     required: false
@@ -18,6 +18,7 @@ runs:
       uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.node-version }}
+        node-version-file: '.nvmrc'
         cache: 'npm'
 
     - name: Install dependencies

@@ -8,6 +8,9 @@
     "email": "eyerhythm@users.noreply.github.com"
   },
   "description": "Privacy-focused real-time eye movement tracking application",
+  "engines": {
+    "node": ">=24"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Benedict-Carling/eyeryhthm.git"
