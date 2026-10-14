@@ -66,7 +66,6 @@
     "d3": "^7.9.0",
     "electron": "^39.8.10",
     "electron-builder": "^25.1.8",
-    "electron-icon-builder": "^2.0.1",
     "electron-squirrel-startup": "^1.0.1",
     "eslint": "^9",
     "eslint-config-next": "^16.4.0",
