@@ -463,7 +463,7 @@ describe('SessionContext', () => {
         await new Promise(resolve => setTimeout(resolve, 300));
       });
 
-      const initialImageCaptureCount = ((global as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
+      const initialImageCaptureCount = ((global as unknown as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
 
       // Simulate multiple blinks
       for (let i = 1; i <= 5; i++) {
@@ -485,7 +485,7 @@ describe('SessionContext', () => {
       }
 
       // ImageCapture should only be created once, not recreated on every blink
-      const finalImageCaptureCount = ((global as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
+      const finalImageCaptureCount = ((global as unknown as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
 
       // Should have created ImageCapture once or very few times, not 5+ times
       expect(finalImageCaptureCount - initialImageCaptureCount).toBeLessThan(3);
