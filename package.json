@@ -37,10 +37,10 @@
   "dependencies": {
     "@aptabase/electron": "^0.3.1",
     "@react-email/components": "^0.0.25",
-    "@supabase/supabase-js": "^2.89.0",
+    "@supabase/supabase-js": "^2.117.3",
     "date-fns": "^4.1.0",
     "electron-log": "^5.4.3",
-    "electron-updater": "^6.6.2",
+    "electron-updater": "^6.8.10",
     "react-day-picker": "^9.12.0",
     "resend": "^4.0.0",
     "standardwebhooks": "^1.0.0",
@@ -58,7 +58,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/d3": "^7.4.3",
     "@types/dom-mediacapture-transform": "^0.1.11",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/uuid": "^10.0.0",
@@ -68,8 +68,8 @@
     "concurrently": "^9.1.0",
     "cross-env": "^10.1.0",
     "d3": "^7.9.0",
-    "electron": "^39.8.10",
-    "electron-builder": "^25.1.8",
+    "electron": "^44.7.2",
+    "electron-builder": "^26.17.0",
     "electron-squirrel-startup": "^1.0.1",
     "eslint": "^9",
     "eslint-config-next": "^16.4.0",
@@ -84,8 +84,5 @@
     "typescript": "npm:@typescript/typescript6@^6.0.2",
     "vitest": "^4.1.11",
     "wait-on": "^8.0.1"
-  },
-  "allowScripts": {
-    "electron@39.8.10": true
   }
 }

@@ -159,7 +159,7 @@ const config = {
      *    - Standard certificate: Requires reputation building with Microsoft
      *    - Providers: DigiCert, Sectigo, GlobalSign, etc.
      *
-     * 2. Configure signing using one of these methods:
+     * 2. Configure signing using one of these methods (options go under win.signtoolOptions):
      *
      * Method 1 - Environment variables (Recommended for CI/CD):
      *   - Set CSC_LINK to base64-encoded .pfx/.p12 file
@@ -168,7 +168,7 @@ const config = {
      *     Example: export CSC_KEY_PASSWORD="your-password"
      *
      * Method 2 - Certificate file path (Recommended for local builds):
-     *   - Uncomment certificateFile and set path to .pfx or .p12 file
+     *   - Uncomment signtoolOptions.certificateFile and set path to .pfx or .p12 file
      *   - Uncomment certificatePassword or use CSC_KEY_PASSWORD env var
      *   - DO NOT commit certificate files to version control!
      *
@@ -189,12 +189,14 @@ const config = {
      *
      * Verify signing: signtool verify /pa /v path\to\EyeRhythm-Setup.exe
      */
-    // certificateFile: undefined, // Path to .pfx or .p12 certificate file
-    // certificatePassword: undefined, // Certificate password (use CSC_KEY_PASSWORD env var)
-    // certificateSubjectName: undefined, // Alternative: certificate subject from Windows store
-    // certificateSha1: undefined, // Alternative: certificate SHA1 thumbprint
-    // rfc3161TimeStampServer: "http://timestamp.digicert.com", // Recommended: timestamp server
-    // timeStampServer: undefined, // Legacy Authenticode timestamp server (use rfc3161 instead)
+    // signtoolOptions: {
+    //   certificateFile: undefined, // Path to .pfx or .p12 certificate file
+    //   certificatePassword: undefined, // Certificate password (use CSC_KEY_PASSWORD env var)
+    //   certificateSubjectName: undefined, // Alternative: certificate subject from Windows store
+    //   certificateSha1: undefined, // Alternative: certificate SHA1 thumbprint
+    //   rfc3161TimeStampServer: "http://timestamp.digicert.com", // Recommended: timestamp server
+    //   timeStampServer: undefined, // Legacy Authenticode timestamp server (use rfc3161 instead)
+    // },
   },
 
   // NSIS installer configuration

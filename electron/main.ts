@@ -287,9 +287,6 @@ function setLaunchAtLogin(enabled: boolean) {
   trackEvent(enabled ? AnalyticsEvents.LAUNCH_AT_LOGIN_ENABLED : AnalyticsEvents.LAUNCH_AT_LOGIN_DISABLED);
 
   if (platform.supportsLoginItems) {
-    // Note: openAsHidden is deprecated on macOS 13+ (Ventura/Sonoma)
-    // The app will launch normally, but our window close handler will keep it in tray
-    // For true hidden launch on macOS 13+, consider using LSUIElement in Info.plist
     app.setLoginItemSettings({
       openAtLogin: enabled,
     });
@@ -831,6 +828,10 @@ function sendFatigueNotification(blinkRate: number): boolean {
     }
   });
 
+  notification.on('failed', (_event, reason) => {
+    warn('[Notification] Failed to show notification:', reason);
+  });
+
   notification.show();
   lastFatigueAlertTime = Date.now();
 
@@ -875,6 +876,10 @@ ipcMain.handle("test-notification", () => {
       mainWindow.focus();
       platform.showDock();
     }
+  });
+
+  notification.on('failed', (_event, reason) => {
+    warn('[Notification] Failed to show notification:', reason);
   });
 
   notification.show();

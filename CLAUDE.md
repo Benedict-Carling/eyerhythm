@@ -126,9 +126,9 @@ eyeryhthm/
 
 ## Core Technology Stack
 
-- **Next.js 15.5.6** with App Router
-- **React 19.1.0** with TypeScript
-- **Electron 39.2.3** for desktop packaging
+- **Next.js 16** with App Router
+- **React 19** with TypeScript
+- **Electron 44** for desktop packaging (macOS 13+, 64-bit only)
 - **MediaPipe** for face landmark detection
 - **Radix UI** for accessible component primitives
 - **D3.js** for custom data visualizations
