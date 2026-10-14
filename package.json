@@ -64,7 +64,7 @@
     "concurrently": "^9.1.0",
     "cross-env": "^10.1.0",
     "d3": "^7.9.0",
-    "electron": "^39.2.5",
+    "electron": "^39.8.10",
     "electron-builder": "^25.1.8",
     "electron-icon-builder": "^2.0.1",
     "electron-squirrel-startup": "^1.0.1",
@@ -81,5 +81,8 @@
     "typescript": "^5",
     "vitest": "^4.1.11",
     "wait-on": "^8.0.1"
+  },
+  "allowScripts": {
+    "electron@39.8.10": true
   }
 }
