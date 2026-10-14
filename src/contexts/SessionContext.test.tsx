@@ -60,11 +60,13 @@ const mockStopMonitoring = vi.fn();
 const mockCheckForFatigue = vi.fn();
 
 vi.mock('../lib/alert-service', () => ({
-  AlertService: vi.fn().mockImplementation(() => ({
-    startMonitoring: mockStartMonitoring,
-    stopMonitoring: mockStopMonitoring,
-    checkForFatigue: mockCheckForFatigue,
-  })),
+  AlertService: vi.fn().mockImplementation(function () {
+    return {
+      startMonitoring: mockStartMonitoring,
+      stopMonitoring: mockStopMonitoring,
+      checkForFatigue: mockCheckForFatigue,
+    };
+  }),
 }));
 
 // Test component that uses the session context
@@ -400,10 +402,12 @@ describe('SessionContext', () => {
       // Mock ImageCapture globally if not already mocked
       const mockImageBitmap = new (global as { ImageBitmap: new() => unknown }).ImageBitmap();
       const grabFrameMock = vi.fn().mockResolvedValue(mockImageBitmap);
-      (global as { ImageCapture?: unknown }).ImageCapture = vi.fn().mockImplementation(() => ({
-        track: {},
-        grabFrame: grabFrameMock,
-      }));
+      (global as { ImageCapture?: unknown }).ImageCapture = vi.fn().mockImplementation(function () {
+        return {
+          track: {},
+          grabFrame: grabFrameMock,
+        };
+      });
 
       const { useBlinkDetection } = await import('../hooks/useBlinkDetection');
       const { useCamera } = await import('../hooks/useCamera');
@@ -459,7 +463,7 @@ describe('SessionContext', () => {
         await new Promise(resolve => setTimeout(resolve, 300));
       });
 
-      const initialImageCaptureCount = ((global as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
+      const initialImageCaptureCount = ((global as unknown as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
 
       // Simulate multiple blinks
       for (let i = 1; i <= 5; i++) {
@@ -481,7 +485,7 @@ describe('SessionContext', () => {
       }
 
       // ImageCapture should only be created once, not recreated on every blink
-      const finalImageCaptureCount = ((global as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
+      const finalImageCaptureCount = ((global as unknown as { ImageCapture?: ReturnType<typeof vi.fn> }).ImageCapture?.mock.calls.length) || 0;
 
       // Should have created ImageCapture once or very few times, not 5+ times
       expect(finalImageCaptureCount - initialImageCaptureCount).toBeLessThan(3);

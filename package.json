@@ -8,6 +8,9 @@
     "email": "eyerhythm@users.noreply.github.com"
   },
   "description": "Privacy-focused real-time eye movement tracking application",
+  "engines": {
+    "node": ">=24"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Benedict-Carling/eyeryhthm.git"
@@ -56,30 +59,33 @@
     "@types/d3": "^7.4.3",
     "@types/dom-mediacapture-transform": "^0.1.11",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@types/uuid": "^10.0.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "@vitejs/plugin-react": "^4.7.0",
     "babel-plugin-react-compiler": "1.0.0",
     "concurrently": "^9.1.0",
     "cross-env": "^10.1.0",
     "d3": "^7.9.0",
-    "electron": "^39.2.5",
+    "electron": "^39.8.10",
     "electron-builder": "^25.1.8",
-    "electron-icon-builder": "^2.0.1",
     "electron-squirrel-startup": "^1.0.1",
     "eslint": "^9",
-    "eslint-config-next": "^16.0.7",
+    "eslint-config-next": "^16.4.0",
     "eslint-plugin-react-hooks": "^7.0.1",
     "fake-indexeddb": "^6.2.5",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "lucide-react": "^0.525.0",
-    "next": "^16.0.7",
-    "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "typescript": "^5",
-    "vitest": "^3.2.4",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "vitest": "^4.1.11",
     "wait-on": "^8.0.1"
+  },
+  "allowScripts": {
+    "electron@39.8.10": true
   }
 }
