@@ -16,10 +16,12 @@ Object.defineProperty(window, 'localStorage', {
 
 // Mock Notification API
 const mockNotification = Object.assign(
-  vi.fn().mockImplementation(() => ({
-    close: vi.fn(),
-    onclick: null,
-  })),
+  vi.fn().mockImplementation(function () {
+    return {
+      close: vi.fn(),
+      onclick: null,
+    };
+  }),
   {
     requestPermission: vi.fn(),
     permission: 'granted' as NotificationPermission,

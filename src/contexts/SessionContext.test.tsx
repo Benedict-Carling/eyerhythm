@@ -60,11 +60,13 @@ const mockStopMonitoring = vi.fn();
 const mockCheckForFatigue = vi.fn();
 
 vi.mock('../lib/alert-service', () => ({
-  AlertService: vi.fn().mockImplementation(() => ({
-    startMonitoring: mockStartMonitoring,
-    stopMonitoring: mockStopMonitoring,
-    checkForFatigue: mockCheckForFatigue,
-  })),
+  AlertService: vi.fn().mockImplementation(function () {
+    return {
+      startMonitoring: mockStartMonitoring,
+      stopMonitoring: mockStopMonitoring,
+      checkForFatigue: mockCheckForFatigue,
+    };
+  }),
 }));
 
 // Test component that uses the session context
@@ -400,10 +402,12 @@ describe('SessionContext', () => {
       // Mock ImageCapture globally if not already mocked
       const mockImageBitmap = new (global as { ImageBitmap: new() => unknown }).ImageBitmap();
       const grabFrameMock = vi.fn().mockResolvedValue(mockImageBitmap);
-      (global as { ImageCapture?: unknown }).ImageCapture = vi.fn().mockImplementation(() => ({
-        track: {},
-        grabFrame: grabFrameMock,
-      }));
+      (global as { ImageCapture?: unknown }).ImageCapture = vi.fn().mockImplementation(function () {
+        return {
+          track: {},
+          grabFrame: grabFrameMock,
+        };
+      });
 
       const { useBlinkDetection } = await import('../hooks/useBlinkDetection');
       const { useCamera } = await import('../hooks/useCamera');
